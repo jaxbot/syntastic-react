@@ -1,0 +1,11 @@
+{
+  "name": "syntastic-react",
+  "version": "1.0.0",
+  "description": "Drop-in replacement for JSXHint to enable React JSX syntax checking",
+  "main": "wrapper.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jonathan Warner (Jaxbot)",
+  "license": "Public Domain"
+}
