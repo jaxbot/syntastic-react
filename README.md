@@ -7,6 +7,10 @@ This is a simple wrapper that:
 
 This gives you the power of syntax checking in Vim, without the annoyance of "unexpected regular expression". Awesome.
 
+<img src="syntastic_1.png" alt="Syntastic working with JSHint issues" />
+
+<img src="syntastic_2.png" alt="Syntastic working with JSX issues" />
+
 # Usage
 
 Remove JSXHint if you have it installed.
