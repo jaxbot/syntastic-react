@@ -1,18 +1,18 @@
-var fs = require("fs");
-var exec = require("child_process").exec;
-var spawn = require("child_process").spawn;
+var child_process = require("child_process");
+var exec = child_process.exec, spawn = child_process.spawn;
 
+// Syntastic will use this to check if the JSXHint checker is available
+// Pretend to exist, but leave a note for the users
 if (process.argv[2] == "--version") {
         console.log("JSXHint v0.8.3 (2.5) (Impersonating -- This is a drop-in replacement for JSXHint by Jonathan Warner, not the real deal.");
         process.exit();
 }
 
+// Run the JSX transformer
 exec("jsx " + process.argv[3], function(err, stdout, stderr) {
+        // If any errors were found (multiple lines spit out, by default 1 is sent to stderr for each module built),
+        // parse the JSX output and convert it into a JSHint format
         if (stderr.split("\n").length > 2) {
-                var file = stderr.match(/Error while reading module (.*):/);
-                if (file)
-                        file = file[1];
-                file = "reacterest/js/components/Pin.js";
                 var regex = /Error: (.*)/g;
                 var count = 0;
                 while ((results = regex.exec(stderr)) !== null) {
@@ -23,6 +23,7 @@ exec("jsx " + process.argv[3], function(err, stdout, stderr) {
                         count++;
                 }
                 console.log("\n" + count + " errors");
+        // Otherwise, just run JSHint and pipe it back out
         } else {
                 var data = "";
                 var jshint = spawn("jshint", ["/dev/stdin", "--verbose", "--filename", "butts"]);
@@ -31,9 +32,12 @@ exec("jsx " + process.argv[3], function(err, stdout, stderr) {
                         data += chunk;
                 });
                 jshint.stdout.on("end", function() {
+                        // We have to give it the correct filename
+                        // JSHint will define it as "/dev/stdin", which will confuse Syntastic
                         data = data.replace(/\/dev\/stdin/g, process.argv[3]);
                         console.log(data);
                 });
+                // Send the compiled JSX output to JSHint
                 jshint.stdin.write(stdout);
                 jshint.stdin.end();
         }
