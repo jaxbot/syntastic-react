@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 var child_process = require("child_process");
 var exec = child_process.exec, spawn = child_process.spawn;
 
