@@ -28,7 +28,7 @@ Add these lines to your vimrc:
 
 ```
 let g:syntastic_javascript_checkers = ['jsxhint']
-let g:syntastic_javascript_jsxhint_exec = ['jsx-jshint-wrapper']
+let g:syntastic_javascript_jsxhint_exec = 'jsx-jshint-wrapper'
 ```
 
 And, of course, install Syntastic.
