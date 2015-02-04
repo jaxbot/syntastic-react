@@ -13,8 +13,6 @@ This gives you the power of syntax checking in Vim, without the annoyance of "un
 
 # Usage
 
-Remove JSXHint if you have it installed.
-
 ```
 npm install -g syntastic-react
 ```
@@ -26,10 +24,11 @@ npm install -g jshint
 npm install -g react-tools
 ```
 
-Add this line to your vimrc:
+Add these lines to your vimrc:
 
 ```
 let g:syntastic_javascript_checkers = ['jsxhint']
+let g:syntastic_javascript_jsxhint_exec = ['jsx-jshint-wrapper']
 ```
 
 And, of course, install Syntastic.
@@ -40,7 +39,7 @@ This is a part of [a blog post on setting up Vim for React development](articles
 
 ## Why? What about JSXHint?
 
-JSXHint is being sunsetted and doesn't handle React errors correctly. This code is a simple wrapper that brings the best of both worlds, though this one is designed specifically for use with syntastic, and thus will not run the same way as the previous JSXHint wrapper.
+JSXHint is being sunsetted and [doesn't handle React errors correctly](https://github.com/STRML/JSXHint/issues/45). This code is a simple wrapper that brings the best of both worlds, though this one is designed specifically for use with syntastic, and thus will not run the same way as the previous JSXHint wrapper.
 
 ## About me
 
