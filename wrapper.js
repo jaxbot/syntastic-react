@@ -27,7 +27,7 @@ exec("jsx " + process.argv[3], function(err, stdout, stderr) {
         // Otherwise, just run JSHint and pipe it back out
         } else {
                 var data = "";
-                var jshint = spawn("jshint", ["/dev/stdin", "--verbose", "--filename", "butts"]);
+                var jshint = spawn("jshint", ["--verbose", "--filename", process.argv[3], "/dev/stdin"]);
                 jshint.stdin.setEncoding = 'utf-8';
                 jshint.stdout.on("data", function(chunk) {
                         data += chunk;

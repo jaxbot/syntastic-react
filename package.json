@@ -1,6 +1,6 @@
 {
   "name": "syntastic-react",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Drop-in replacement for JSXHint to enable React JSX syntax checking",
   "main": "wrapper.js",
   "scripts": {
