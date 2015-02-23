@@ -35,7 +35,7 @@ And, of course, install Syntastic.
 
 # More info
 
-This is a part of [a blog post on setting up Vim for React development](articles/setting-up-vim-for-react-js-jsx-02-03-2015).
+This is a part of [a blog post on setting up Vim for React development](https://jaxbot.me/articles/setting-up-vim-for-react-js-jsx-02-03-2015).
 
 ## Why? What about JSXHint?
 
