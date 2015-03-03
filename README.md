@@ -41,6 +41,21 @@ This is a part of [a blog post on setting up Vim for React development](https://
 
 JSXHint is being sunsetted and [doesn't handle React errors correctly](https://github.com/STRML/JSXHint/issues/45). This code is a simple wrapper that brings the best of both worlds, though this one is designed specifically for use with syntastic, and thus will not run the same way as the previous JSXHint wrapper.
 
+# JSON support
+
+If you receive an `Unexpected token` error when editing JSON files, note that Vim defaults to `json` being `ft=javascript`. Two main options exist to remedy this:
+
+1. Use [vim-json](https://github.com/elzr/vim-json) and get proper JSON highlighting and filetype support.
+
+2. Override the filetype manually in your vimrc, something like:
+
+```
+au BufRead,BufNewFile *.json set filetype=json
+let g:syntastic_json_checkers=['jsonlint']
+```
+
+(Thanks, [sharkinsspatial](https://github.com/sharkinsspatial)!)
+
 ## About me
 
 I'm Jonathan, I work on random Vim plugins, web development, Node.js, Android, and whatever else I feel like. [Follow me](https://github.com/jaxbot) if you're curious, or just want to make my day!
