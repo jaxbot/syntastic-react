@@ -9,8 +9,11 @@ if (process.argv[2] == "--version") {
         process.exit();
 }
 
-// Run the JSX transformer
-exec("jsx " + process.argv[3], function(err, stdout, stderr) {
+// Run the transformer
+var transformer = "jsx";
+if (process.argv[4] == "--babel")
+        transformer = "babel";
+exec(transformer + " " + process.argv[3], function(err, stdout, stderr) {
         // If any errors were found (multiple lines spit out, by default 1 is sent to stderr for each module built),
         // parse the JSX output and convert it into a JSHint format
         if (stderr.split("\n").length > 2) {
