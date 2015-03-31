@@ -1,5 +1,55 @@
 # Syntastic Checker for React JSX files
 
+## New way using ESLint
+
+This project has been deprecated in favor of using ESLint, which supports React, JSX, and new ES6 features, and is in very active development.
+
+To use Syntastic with ESLint:
+
+Install eslint, babel-eslint (for ES6 support), and [eslint-plugin-react](https://github.com/yannickcr/eslint-plugin-react):
+
+```
+npm install -g eslint
+npm install -g babel-eslint
+npm install -g eslint-plugin-react
+```
+
+Create a config like this in your project's `.eslintrc`, or do so globally by placing it in `~/.eslintrc`:
+
+```
+{
+    "parser": "babel-eslint",
+    "env": {
+        "browser": true,
+        "node": true
+    },
+    "settings": {
+        "ecmascript": 6,
+        "jsx": true
+    },
+    "plugins": [
+        "react"
+    ],
+    "rules": {
+        "strict": 0,
+        "quotes": 0,
+        "no-unused-vars": 0,
+        "camelcase": 0,
+        "no-underscore-dangle": 0
+    }
+}
+```
+
+Finally, configure Syntastic to use ESLint:
+
+```
+let g:syntastic_javascript_checkers = ['eslint']
+```
+
+You should be good to go! See [this issue](https://github.com/jaxbot/syntastic-react/issues/6#issuecomment-86569859) for more info.
+
+## Using this project and JSHint instead
+
 This is a simple wrapper that:
 * Tries to compile as JSX
 * Checks if the JSX compiler throws errors, and sends them to Syntastic if so
